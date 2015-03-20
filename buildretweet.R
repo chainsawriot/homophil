@@ -26,10 +26,17 @@ connections <- ddply(rt_links, .(retweeted_status_user_id), function(x) as.data.
 
 
 saveRDS(connections, "connections.RDS")
+connections <- readRDS("connections.RDS")
 require(igraph)
-## Thought: Maybe we should remove edges with weight == 1
 
 connections <- connections[,2:4]
+
+## keep on edges with at least freq = 3
+connections <- connections[connections$Freq > 2,]
+
+
 weibo_graph <- graph.data.frame(connections[,1:2])
 E(weibo_graph)$weight <- connections[,3]
 saveRDS(weibo_graph, "weibo_graph.RDS")
+#wc <- walktrap.community(weibo_graph)
+#saveRDS(wc, "wc.RDS")

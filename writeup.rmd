@@ -1,0 +1,14 @@
+# research questions
+
+* What kind of homophilic force brings microbloggers together in the social media
+- geographic versus similarlity in user profile
+- User discovery?
+
+# method
+
+* Data from Jan-1 2015 to Feb-28 from weiboscope
+* Only study the retweet behavior
+* Nodes are microbloggers
+* Edges are retweets between microbloggers at least 3 times.
+* community detection algo is walk.trap
+* Only retain those belong to large communities (defined as community with at least 100 members)
